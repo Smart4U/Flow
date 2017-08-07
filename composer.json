@@ -1,0 +1,16 @@
+{
+    "name": "smart4u/flow",
+    "authors": [
+        {
+            "name": "Smart4U",
+            "email": "inbox.martinez.dev@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Flow\\": "src/"
+        }
+    }
+}
