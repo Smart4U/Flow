@@ -6,7 +6,9 @@
             "email": "inbox.martinez.dev@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php-di/php-di": "^5.4"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/",

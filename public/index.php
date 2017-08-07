@@ -17,6 +17,6 @@ define('STORAGE',  BASE.'storage/');
 /**
  * Bootstrap file to load the composer autoloader
  */
-require BASE.'vendor/autoload.php';
+require BASE.'bootstrap.php';
 
 ?>
