@@ -2,9 +2,6 @@
 
 use function Http\Response\send;
 
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\ServerRequest;
-
 
 /**
  * Front controller
@@ -25,9 +22,8 @@ define('STORAGE',  BASE.'storage/');
  */
 require BASE.'bootstrap.php';
 
-
-$request = ServerRequest::fromGlobals();
-$response = new Response();
+$request = $container->get('Request');
+$response = $container->get('Response');
 $response->getBody()->write('homepage');
 
 send($response);
