@@ -8,4 +8,7 @@ use function DI\object;
 
 return [
 
+    // Dotfiles
+    Symfony\Component\Dotenv\Dotenv::class => object(),
+
 ];
