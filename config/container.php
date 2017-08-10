@@ -8,9 +8,6 @@ use function DI\object;
 
 return [
 
-    'settings.route.cacheFile' => STORAGE.'cache/routing/app_routes.cache',
-    'settings.route.cacheDisable' => true,
-
     'routes' => require  CONFIG.'routes.php',
     'config' => require CONFIG.'config.php',
 
