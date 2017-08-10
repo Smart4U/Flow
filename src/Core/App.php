@@ -63,11 +63,26 @@ class App {
                 $this->bundles[] = $this->container->get($bundle);
             }
         }
-        if( !is_null($this->bundles)){
-            foreach ($this->bundles as $bundle) {
-                $newRoutes = array_merge($this->container->get('routes'), $bundle->routes);
-                $this->container->set('routes', $newRoutes);
+        $this->setRoutesBundle();
+    }
+
+    /**
+     * Define route for
+     */
+    private function setRoutesBundle() :void {
+        if(
+            $this->container->get('config')['route.cacheDisable'] === false && !file_exists($this->container->get('config')['route.cacheFile'])
+            || $this->container->get('config')['route.cacheDisable'] === true
+        ) {
+            if( !is_null($this->bundles)){
+                foreach ($this->bundles as $bundle) {
+                    $newRoutes = array_merge($this->container->get('routes'), $bundle->routes);
+                    $this->container->set('routes', $newRoutes);
+                }
             }
+        } else {
+            $routes = require $this->container->get('config')['route.cacheFile'];
+            $this->container->set('routes', $routes);
         }
     }
 
