@@ -15,6 +15,11 @@ use Psr\Http\Message\ServerRequestInterface;
 class App {
 
     /**
+     * @var array $bundles
+     */
+    private $bundles = [];
+
+    /**
      * @var int $selector
      */
     private $selector = -1;
@@ -48,6 +53,23 @@ class App {
         $this->container = $container;
     }
 
+    /**
+     * @param array $bundles
+     */
+    public function bindBundle(array $bundles) :void {
+        foreach ($bundles as $bundle){
+            if($this->container->has($bundle)){
+                $this->container->get($bundle);
+                $this->bundles[] = $this->container->get($bundle);
+            }
+        }
+        if( !is_null($this->bundles)){
+            foreach ($this->bundles as $bundle) {
+                $newRoutes = array_merge($this->container->get('routes'), $bundle->routes);
+                $this->container->set('routes', $newRoutes);
+            }
+        }
+    }
 
     /**
      * @param callable $middleware

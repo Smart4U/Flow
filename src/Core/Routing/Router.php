@@ -46,7 +46,7 @@ class Router
     {
         $this->container = $container;
         $routes = $container->get('routes');
-
+        
         $this->setDispatcher(
             $dispatcher = cachedDispatcher(function(RouteCollector $r) use($routes) {
                 foreach ($routes as $path => [$method, $action]){
@@ -83,7 +83,7 @@ class Router
     /**
      * @param Dispatcher $dispatcher
      */
-    public function setDispatcher(Dispatcher $dispatcher)
+    public function setDispatcher(Dispatcher $dispatcher) :void
     {
         $this->dispatcher = $dispatcher;
     }

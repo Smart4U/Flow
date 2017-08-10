@@ -22,7 +22,11 @@ define('STORAGE',  BASE.'storage/');
  */
 require BASE.'bootstrap.php';
 
-$app = new \Flow\Core\App( require CONFIG . '/container.php' );
+$config = require CONFIG . '/container.php';
+$bundles =  require CONFIG . '/bundles.php';
+
+$app = new \Flow\Core\App($config);
+$app->bindBundle($bundles);
 
 $response = $app->run();
 
